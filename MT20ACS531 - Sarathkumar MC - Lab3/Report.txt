@@ -1,0 +1,46 @@
+AgentTesla - https://github.com/InQuest/malware-samples/tree/master/2018-05-Agent-Tesla-Open-Directory/agent-tesla 
+==========
+
+Agent Tesla is an extremely popular "malware-as-a-service" RAT used to steal information such as credentials, keystrokes, clipboard data, and other information from its operators' targets. Most commonly delivered via phishing campaigns, Agent Tesla has been deployed in several iterations since it first appeared around 2014.
+
+Malware Details
+===============
+
+Malware Type    - Windows Trojan
+File type       - Win32.exe
+Magic           - PE32 executable for MS Windows (GUI) Intel 80386 32-bit Mono/.Net assembly
+PEiD packer     - .NET executable
+Target Machine  - Intel 386 or later processors and compatible processors
+TrID            – File Identifier	Generic CIL Executable (.NET, Mono, etc.)
+                  Win64 Executable (generic)
+                  Win32 Dynamic Link Library (generic)
+                  Win32 Executable (generic)
+                  OS/2 Executable (generic)
+
+Yara Strings and Description
+============================
+
+1.  This program cannot be run in DOS mode
+    -> It helps to identify if it is an Windows executable
+
+2.  46599D29C9831138B75ED7B25049144259139724
+    -> This hash is identified as Ansi based on Memory/File Scan, also known as fileless malware, is a type of malicious software that writes itself directly onto a computer’s system memory. (Source - https://www.hybrid-analysis.com/sample/0abb52b3e0c08d5e3713747746b019692a05c5ab8783fd99b1300f11ea59b1c9/5bf8d9ff7ca3e1631823b933)
+
+3.  92C47DC4F08DC5D2560CAA66BD2B9E7B16370916
+    -> This hash is identified as Ansi based on PCAP Processing. PCAP is an application programming interface (API) for capturing network traffic. Those captured files are processed for retrieval of data (Source - https://www.hybrid-analysis.com/sample/3cb0aa671cdae84f999f029168041c21839046d85d3e94e524f4e8857cf218d8?environmentId=100)
+
+4.  a4attempt4
+    -> It is found to be a malware executable (Source - http://www.softpanorama.org/Malware/Bulletin/malware2009.shtml)
+
+5.  b03f5f7f11d50a3a
+    -> It is found to be a public token. Registry Keys are changed.
+    -> QSystem.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a
+    -> hSystem.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3aPADPAD
+    (Source - https://otx.alienvault.com/indicator/file/2a35ed170d9726911eb903bafb4b59cf395062dfbd8d1b772a81b4a0fa668b74)
+    (Source - https://www.sophos.com/en-us/threat-center/threat-analyses/viruses-and-spyware/Troj~PWS-BQP/detailed-analysis.aspx)
+
+6.  b77a5c561934e089
+    -> It is found to be a public token. Registry Keys are changed.
+    -> lSystem.Resources.ResourceReader, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089#System.Resources.RuntimeResourceSet
+    (Source - https://otx.alienvault.com/indicator/file/2a35ed170d9726911eb903bafb4b59cf395062dfbd8d1b772a81b4a0fa668b74)
+    (Source - https://www.sophos.com/en-us/threat-center/threat-analyses/viruses-and-spyware/Troj~PWS-BQP/detailed-analysis.aspx)
